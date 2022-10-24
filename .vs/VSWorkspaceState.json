@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\smartcontract",
+    "\\smartcontract\\scripts",
+    "\\smartcontract\\test"
   ],
-  "SelectedNode": "\\C:\\Users\\asus\\Source\\Repos\\sentiment-moralis-dapp",
+  "SelectedNode": "\\smartcontract\\test\\sample-test.js",
   "PreviewInSolutionExplorer": false
 }

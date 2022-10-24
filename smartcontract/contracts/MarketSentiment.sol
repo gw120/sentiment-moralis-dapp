@@ -57,5 +57,14 @@ contract MarketSentiment {
 
         emit tickerupdated (t.up,t.down,msg.sender,_ticker);
     }
+        function getVotes(string memory _ticker) public view returns (
+        uint256 up,
+        uint256 down
+    ){
+        require(Tickers[_ticker].exists, "No such Ticker Defined");
+        ticker storage t = Tickers[_ticker];
+        return(t.up,t.down);
+
+    }
 
 }

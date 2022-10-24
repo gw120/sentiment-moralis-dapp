@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./Coin.css";
 
-function Coin() {
+function Coin({ perc, setPerc, token }) {
 
     return (
         <>
             <div>
-                Coin go here
+                <div className="token">
+                    {token}
+                </div>
+                <div className="circle">
+                    <div className="wave"
+
+                    >
+                    </div>
+                    <div className="percentage">
+                        {perc}
+                    </div>
+                </div>
             </div>
         </>
     );

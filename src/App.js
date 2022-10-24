@@ -22,12 +22,9 @@ const App = () => {
             <div className="instructions">
                 How are you feeling about these tokens? Up or it do go Down ?
             </div>
-
-            <Coin
-                perc={btc}
-                setPerc={setBtc}
-                token={"BTC"}
-            />
+            <div className="list">
+                <Coin perc={btc} setPerc={setBtc} token={"BTC"} />
+            </div>
 
         </>
     );

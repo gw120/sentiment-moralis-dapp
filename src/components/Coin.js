@@ -9,7 +9,7 @@ function Coin({ perc, setPerc, token }) {
                 <div className="token">
                     {token}
                 </div>
-                <div className="circle">
+                <div className="circle" style={{ boxShadow: `0 0 20px green` }}>
                     <div className="wave"
                         style={{
                             marginTop: `${100 - perc}%`,

@@ -15,6 +15,9 @@ const App = () => {
                 </div>
                 <ConnectButton />
             </div>
+            <div className="instructions">
+                How are you feeling about these tokens? Up or it do go Down ?
+            </div>
         </>
     );
 };

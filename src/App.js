@@ -7,7 +7,7 @@ import Coin from "./components/Coin";
 
 const App = () => {
 
-    const [btc, setBtc] = useState(50);
+    const [btc, setBtc] = useState(20);
 
     return (
         <>

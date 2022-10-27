@@ -4,7 +4,7 @@ import { Button } from "web3uikit";
 
 import LOGO_BTC from "../images/btc.png"
 import LOGO_ETH from "../images/eth.png"
-import LOGO_EWT from "../images/ewt.png"
+import LOGO_MATIC from "../images/poly.png"
 
 function Coin({ perc, setPerc, token, setModalToken, setVisible }) {
     const [color, setColor] = useState();
@@ -25,8 +25,8 @@ function Coin({ perc, setPerc, token, setModalToken, setVisible }) {
         if (token === "ETH") {
             setLogoSymbol(LOGO_ETH);
         }
-        if (token === "EWT") {
-            setLogoSymbol(LOGO_EWT);
+        if (token === "POLYGON") {
+            setLogoSymbol(LOGO_MATIC);
         }
     }, []);
 

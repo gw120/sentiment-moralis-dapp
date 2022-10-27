@@ -23,6 +23,55 @@ const App = () => {
     const [modalPrice, setModalPrice] = useState();
     const Web3Api = useMoralisWeb3Api();
 
+    const { Moralis, isInitialized } = useMoralis();
+
+    async function getRatio(tick, setPerc) {
+
+        const Votes = Moralis.Object.extend("Votes");
+        const query = new Moralis.Query(Votes);
+
+        query.equalTo("ticker", tick);
+        query.descending("createdAt");
+
+        const results = await query.first();
+
+        let up = Number(results.attributes.up);
+        let down = Number(results.attributes.down);
+
+        let ratio = Math.round(up / (up + down) * 100);
+
+        setPerc(ratio);
+    }
+
+    useEffect(() => {
+        if (isInitialized) {
+            getRatio("BTC", setBtc);
+            getRatio("ETH", setEth);
+            getRatio("POLYGON", setMatic);
+
+            async function createLiveQuery() {
+                let query = new Moralis.Query('Votes');
+                let subscription = await query.subscribe();
+                subscription.on('update', (object) => {
+
+                    if (object.attributes.ticker === "POLYGON") {
+                        getRatio("POLYGON", setMatic);
+                    } else if (object.attributes.ticker === "ETH") {
+                        getRatio("ETH", setEth);
+                    } else if (object.attributes.ticker === "BTC") {
+                        getRatio("BTC", setBtc);
+                    }
+
+                });
+            }
+
+
+            createLiveQuery();
+        }
+
+    }, [isInitialized]);
+
+
     useEffect(() => {
 
         async function fetchTokenPrice() {

@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\smartcontract",
-    "\\smartcontract\\scripts",
-    "\\smartcontract\\test"
+    "\\src",
+    "\\src\\components"
   ],
-  "SelectedNode": "\\smartcontract\\test\\sample-test.js",
+  "SelectedNode": "\\src\\components\\Coin.js",
   "PreviewInSolutionExplorer": false
 }

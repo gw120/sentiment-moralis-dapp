@@ -28,7 +28,7 @@ function Coin({ perc, setPerc, token }) {
                     >
                     </div>
                     <div className="percentage">
-                        {perc}
+                        {perc}%
                     </div>
                 </div>
             </div>

@@ -36,6 +36,7 @@ function Coin({ perc, setPerc, token }) {
                 <div className="votes">
                     <Button
                         onClick={() => {
+                         setPerc(perc + 1)
                         }}
                         text="Up"
                         theme="primary"
@@ -45,6 +46,7 @@ function Coin({ perc, setPerc, token }) {
                     <Button
                         color="red"
                         onClick={() => {
+                        setPerc(perc + 1)
                         }}
                         text="Down"
                         theme="colored"

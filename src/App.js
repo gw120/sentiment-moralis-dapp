@@ -4,16 +4,41 @@ import { ConnectButton, Modal } from "web3uikit";
 import logo from "./images/Moralis.png";
 import Coin from "./components/Coin";
 
+import { abouts } from "./about";
+
+import { useMoralisWeb3Api, useMoralis } from "react-moralis";
+
+
 const App = () => {
 
     const [btc, setBtc] = useState(20);
     const [eth, setEth] = useState(68);
-    const [ewt, setEwt] = useState(49);
+    const [matic, setMatic] = useState(49);
 
     const [modalToken, setModalToken] = useState();
     const [visible, setVisible] = useState(false);
 
     const [btc, setBtc] = useState(20);
+
+    const [modalPrice, setModalPrice] = useState();
+    const Web3Api = useMoralisWeb3Api();
+
+    useEffect(() => {
+
+        async function fetchTokenPrice() {
+            const options = {
+                address:
+                    abouts[abouts.findIndex((x) => x.token === modalToken)].address,
+            };
+            const price = await Web3Api.token.getTokenPrice(options);
+            setModalPrice(price.usdPrice.toFixed(2));
+        }
+
+        if (modalToken) {
+            fetchTokenPrice()
+        }
+
+    }, [modalToken]);
 
     return (
         <>
@@ -35,7 +60,7 @@ const App = () => {
                 <Coin perc={eth} setPerc={setEth} token={"ETH"}
                     setModalToken={setModalToken}
                     setVisible={setVisible} />
-                <Coin perc={ewt} setPerc={setEwt} token={"EWT"}
+                <Coin perc={matic} setPerc={setMatic} token={"POLYGON"} 
                     setModalToken={setModalToken}
                     setVisible={setVisible} />
             </div>
@@ -48,16 +73,15 @@ const App = () => {
             >
                 <div>
                     <span style={{ color: "white" }}>{`Price: `}</span>
-                    {11}$
+                    {modalPrice}$
                 </div>
-
 
                 <div>
                     <span style={{ color: "white" }}>{`About`}</span>
                 </div>
                 <div>
-                    {/* {modalToken &&
-            abouts[abouts.findIndex((x) => x.token === modalToken)].about} */}
+                    {modalToken &&
+                    abouts[abouts.findIndex((x) => x.token === modalToken)].about}
                 </div>
 
             </Modal>
